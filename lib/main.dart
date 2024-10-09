@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pixabay_gallery/src/di/injection_container.dart' as di;
-import 'package:pixabay_gallery/src/screens/home.dart';
-import 'package:pixabay_gallery/src/screens/splash.dart';
-import 'package:pixabay_gallery/src/screens/unknown_route.dart';
+import 'package:pixabay_gallery/src/routes/routes.dart' as routes;
+
 
 void main() {
   di.inject(
@@ -25,23 +24,7 @@ class PixabayGalleryApp extends StatelessWidget {
         useMaterial3: true,
       ),
       debugShowCheckedModeBanner: false,
-      onGenerateRoute: (settings) {
-        switch (settings.name) {
-          case '/':
-            return MaterialPageRoute(
-              builder: (context) => const SplashScreen(),
-            );
-          case '/home':
-            return MaterialPageRoute(
-              builder: (context) => const HomeScreen(),
-            );
-
-          default:
-            return MaterialPageRoute(
-              builder: (context) => const UnknownRouteScreen(),
-            );
-        }
-      },
+      onGenerateRoute: routes.onGenerateRoute,
     );
   }
 }

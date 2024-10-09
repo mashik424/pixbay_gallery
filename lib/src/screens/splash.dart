@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pixabay_gallery/src/routes/routes.dart' as routes;
+import 'package:pixabay_gallery/src/utils/context_exts.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -7,9 +9,7 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Future.delayed(
       const Duration(seconds: 3),
-      () => Navigator.of(context).pushReplacementNamed(
-        '/home',
-      ),
+      () => context.pushNamed<void>(routes.home),
     );
     final theme = Theme.of(context);
     return Scaffold(
